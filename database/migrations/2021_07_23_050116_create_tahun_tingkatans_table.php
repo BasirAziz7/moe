@@ -15,11 +15,11 @@ class CreateTahunTingkatansTable extends Migration
     {
         Schema::create('tahun_tingkatans', function (Blueprint $table) {
             $table->id();
-            $table->string('bilangan_pelajar');
             $table->string('umur');
             $table->string('peringkat');
             $table->string('negeri');
             $table->string('nama_sekolah');
+            $table->string('jantina');
             $table->timestamps();
         });
     }

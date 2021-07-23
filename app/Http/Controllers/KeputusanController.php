@@ -14,7 +14,10 @@ class KeputusanController extends Controller
      */
     public function index()
     {
-        //
+        $keputusans = Keputusan::all();
+        return view('keputusan.index',[
+            'keputusans'=> $keputusans
+        ]);
     }
 
     /**
@@ -24,7 +27,7 @@ class KeputusanController extends Controller
      */
     public function create()
     {
-        //
+        return view('keputusan.create');
     }
 
     /**
@@ -35,7 +38,24 @@ class KeputusanController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+           
+            
+            'tahuntingkatan_id'=> 'required',
+            'jenis_pentaksiran'=> 'required', 
+            'subjek'=>'required',
+            'gred'=>'required',
+
+        ]);
+        echo $request;
+        $keputusan = new Keputusan;
+       
+        $keputusan ->tahuntingkatan_id= $request->tahuntingkatan_id;
+        $keputusan ->jenis_pentaksiran= $request->jenis_pentaksiran;
+        $keputusan ->subjek= $request->subjek;
+        $keputusan ->gred= $request->gred;
+        $keputusan->save(); 
+        return redirect('/keputusans');
     }
 
     /**
@@ -46,7 +66,9 @@ class KeputusanController extends Controller
      */
     public function show(Keputusan $keputusan)
     {
-        //
+        return view('keputusan.show', [
+            'keputusan'=> $keputusan
+        ]);
     }
 
     /**
@@ -57,7 +79,7 @@ class KeputusanController extends Controller
      */
     public function edit(Keputusan $keputusan)
     {
-        //
+        return view('keputusan.edit');
     }
 
     /**
@@ -69,7 +91,12 @@ class KeputusanController extends Controller
      */
     public function update(Request $request, Keputusan $keputusan)
     {
-        //
+        
+        $keputusan ->tahuntingkatan_id= $request->tahuntingkatan_id;
+        $keputusan ->jenis_pentaksiran= $request->jenis_pentaksiran;
+        $keputusan ->subjek= $request->subjek;
+        $keputusan ->gred= $request->gred;
+        $keputusan->save(); 
     }
 
     /**

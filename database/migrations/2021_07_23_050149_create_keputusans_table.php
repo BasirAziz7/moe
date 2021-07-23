@@ -16,7 +16,9 @@ class CreateKeputusansTable extends Migration
         Schema::create('keputusans', function (Blueprint $table) {
             $table->id();
             $table->string('jenis_pentaksiran');
-            $table->foreignid('tahuntingkatan');
+            $table->foreignid('tahuntingkatan_id');
+            $table->string('subjek');
+            $table->string('gred');
             $table->timestamps();
         });
     }
